@@ -19,7 +19,7 @@ public class CustomerController {
 
     @RequestMapping("/")
     public String welcome() {
-        return "Welcome to this small REST service. It will accept a GET on /list with a request parameter lastName, and a POST to / with a JSON payload with firstName and lastName as values.";
+        return "funker det nå";
     }
 
     @RequestMapping("/list")

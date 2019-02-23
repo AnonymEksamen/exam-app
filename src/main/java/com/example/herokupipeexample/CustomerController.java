@@ -16,7 +16,7 @@ public class CustomerController {
 
     @RequestMapping("/")
     public String welcome() {
-        return "funker det nå?";
+        return "test;
     }
 
     @RequestMapping("/list")

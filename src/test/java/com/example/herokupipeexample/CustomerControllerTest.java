@@ -56,8 +56,6 @@ public class CustomerControllerTest
 
         assertEquals(customer.getFirstName(), firstName);
         assertEquals(customer.getLastName(), lastName);
-
-
     }
 
     @Test
@@ -65,27 +63,27 @@ public class CustomerControllerTest
     {
         String firstName = "Fornavn";
         String lastName = "Etternavn";
-        Customer foo = new Customer(firstName,lastName);
+        Customer customer = new Customer(firstName,lastName);
 
-        Customer customer = given().contentType(ContentType.JSON)
-                .body(foo)
+        Customer customer1 = given().contentType(ContentType.JSON)
+                .body(customer)
                 .post()
                 .then()
                 .statusCode(200)
                 .extract().as(Customer.class);
 
-        assertEquals(customer.getFirstName(), firstName);
-        assertEquals(customer.getLastName(), lastName);
+        assertEquals(customer1.getFirstName(), firstName);
+        assertEquals(customer1.getLastName(), lastName);
 
         Customer deletedCustomer = given().contentType(ContentType.JSON)
-                .body(foo)
+                .body(customer)
                 .post()
                 .then()
                 .statusCode(200)
                 .extract().as(Customer.class);
 
-        assertEquals(customer.getFirstName(), firstName);
-        assertEquals(customer.getLastName(), lastName);
+        assertEquals(deletedCustomer.getFirstName(), firstName);
+        assertEquals(deletedCustomer.getLastName(), lastName);
     }
 
     @Test
@@ -101,7 +99,6 @@ public class CustomerControllerTest
                 .then()
                 .statusCode(200)
                 .extract().as(Customer.class);
-
 
         given().accept(ContentType.JSON)
                 .get("/list?lastName=Etternavn")
